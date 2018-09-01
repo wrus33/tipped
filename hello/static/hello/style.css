@@ -1,29 +1,19 @@
 
 .loggedTipCell{
-	background-color: lightblue;
-	border-radius: 15px;
-	border-style: solid;
 	border-color: black;
-	margin: 5px;
-	display: block;
-	position: relative;
-	width: 500px;
-	right: 0;
-	text-align: center;
+	border-style: solid;
 
 }
-.loggedTipCell a{
-	text-decoration: none;
+#tipHistoryBlock a:hover{
 }
 #tipHistoryBlock{
-	height:90%;
-	padding-top:10%;
-	position: absolute;
-	overflow:scroll;
-	top: 0;
-	left: 50%;
+	
+
+
 
 }
-.body{
-	background-color: lightgreen;
+#tipHistoryBlock h1{
+	
+
 }
+#

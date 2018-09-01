@@ -13,7 +13,7 @@ from .models import Shift
 def index(request):
     testCases = testClass.objects.order_by('secondField')
     shifts = Shift.objects.all()
-    return render(request, 'index.html', {'shifts': shifts})
+    return render(request, 'hello/tip_list.html', {'shifts': shifts})
 
 
 def db(request):

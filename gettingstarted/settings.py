@@ -57,6 +57,8 @@ ROOT_URLCONF = 'gettingstarted.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+             'DIRS': ['./templates',],
+             'APP_DIRS': True,
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -123,3 +125,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'

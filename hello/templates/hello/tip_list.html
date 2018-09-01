@@ -1,0 +1,16 @@
+
+{% extends 'hello/base.html' %}
+
+
+{% block content %}
+             <div class="container" id="tipHistoryBlock">
+            <h1 id="upcomingLabel">Upcoming Shifts   <a href="#">+</a></h1>
+            {% for shift in shifts %}
+            <a href=""><div class="loggedTipCell">
+                <h1>Predicted: ${{ shift.amount }}</h1>
+                <h1>{{ shift.date }}</h1>
+                <h1>{{ post.text|linebreaksbr }}</h1>
+            </div></a>
+            {% endfor %}
+        </div>
+{% endblock %}

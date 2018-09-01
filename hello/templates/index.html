@@ -9,36 +9,84 @@
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 
 </head>
 
-<body>
-    <div id="body" class="container">
+<body id="body">
         <h1 id="title">tipped</h1>
-    <div id="logInBar">Logged in as: <p id="userID">William Russell</p></div>
-
-
-        <div id="navBox" class="container">
-            
-            <div id="homeMenuButton" class="navButton">Home</div>
-            <div id="scheduleMenuButton" class="navButton">Schedule</div>
-            <div id="statisticsMenuButton" class="navButton">Statistics</div>
-            
-        </div>
+    
         
         <div class="container" id="tipHistoryBlock">
-
-        {% for shift in shifts %}
-        <a href=""><div class="loggedTipCell">
-            <h1>${{ shift.amount }}</h1>
-            <h1>{{ shift.date }}</h1>
-            <h1>{{ post.text|linebreaksbr }}</h1>
-        </div></a>
-        {% endfor %}
+            <h1 id="upcomingLabel">Upcoming Shifts   <a href="#">+</a></h1>
+            {% for shift in shifts %}
+            <a href=""><div class="loggedTipCell">
+                <h1>Predicted: ${{ shift.amount }}</h1>
+                <h1>{{ shift.date }}</h1>
+                <h1>{{ post.text|linebreaksbr }}</h1>
+            </div></a>
+            {% endfor %}
         </div>
-</div>
+        
+        <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+        </a>
+        
+        
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar" id="navBar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            Orders
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="shopping-cart"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="users"></span>
+                            Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="bar-chart-2"></span>
+                            Reports
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="layers"></span>
+                            Integrations
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+        </nav>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
 </body>
 
