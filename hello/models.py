@@ -18,5 +18,4 @@ class Shift(models.Model):
     amount = models.IntegerField()
     date = models.DateTimeField()
     def __str__(self):
-        
         return str(self.amount)

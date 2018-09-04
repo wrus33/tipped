@@ -17,7 +17,7 @@ def index(request):
     return render(request, 'hello/home.html', {'shifts': shifts})
 
 def scheduled(request):
-    shifts = Shift.objects.order_by('date')
+    shifts = Shift.objects.all()
     return render(request, 'hello/tip_list.html', {'shifts': shifts})
 
 def statistics(request):
