@@ -3,14 +3,79 @@
 
 
 {% block content %}
-             <div class="container" id="tipHistoryBlock">
-            <h1 id="upcomingLabel">Upcoming Shifts   <a href="#">+</a></h1>
-            {% for shift in shifts %}
-            <a href=""><div class="loggedTipCell">
-                <h1>Predicted: ${{ shift.amount }}</h1>
-                <h1>{{ shift.date }}</h1>
-                <h1>{{ post.text|linebreaksbr }}</h1>
-            </div></a>
-            {% endfor %}
-        </div>
+			<div class="container-fluid">
+				
+				<div class="row">
+					<div class="col">
+         				<div class="container-fluid">
+         					    <h3 class="card-title text-center">Quick Projections</h3>
+
+         					<div class="">
+         						<div class="card-content">
+         							<div class="container-fluid text-center">
+         								<div class="row">
+         									<div class="col-md-4">
+         										<div class="card">
+         											<div class="card-content">
+         												
+         												<h4 class="card-title">Projected:</h4>
+         												<h3 class="card-body projectionscontent">$789</h3>
+         												
+         											</div>
+         										</div>
+         									</div>
+         									<div class="col-md-4">
+         										<div class="card">
+         											<div class="card-content">
+         												<h4 class="card-title">Average Projection:</h4>
+         												<h3 class="card-body projectionscontent">$78</h3>
+         											</div>
+         										</div>
+         									</div>
+         									<div class="col-md-4">
+         										<div class="card">
+         											<div class="card-content">
+         												<h4 class="card-title">Shifts:</h4>
+         												<h3 class="card-body projectionscontent">10</h3>
+         											</div>
+         										</div>
+         									</div>
+         									<div class="col-md-4">
+         										<div class="card">
+         											<div class="card-content">
+         												<h4 class="card-title">Monthly Goal Progress:</h4>
+         												<h3 class="card-body projectionscontent">85%</h3>
+         											</div>
+         										</div>
+         									</div>
+         								</div>
+         							</div>
+         						</div>
+         					</div>
+     					</div>
+     				</div>
+					<div class="col">
+            			<div class="container-fluid">
+            	            <h3 id="upcomingLabel" class="card-title text-center">Upcoming Shifts   <a href="#">+</a></h3>
+
+            				{%  for shift in shifts  %}
+               				 {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {%  endif %}
+                 			<div class="col-md-4" style="cursor: pointer">
+                      			<div class="card">
+                          			<a href="{% url 'tip' pk=shift.pk %}">
+                          				<div class="card-content tip-card">
+                              				<br>
+                              				<h4>{{ shift.date }}</h4>
+                              				<h4>Projected: ${{ shift.amount }}</h4>
+                              				<br>
+                          				</div></a><!-- card content -->
+                     			</div><!-- card -->
+                  			</div><!-- col-md-4 -->
+            				{%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+            				{%  endfor %}
+         				</div><!-- container -->
+     				</div>
+     			</div>
+     		</div>
 {% endblock %}
+

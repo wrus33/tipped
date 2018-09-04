@@ -12,8 +12,11 @@ import hello.views
 
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
-    url(r'^db', hello.views.db, name='db'),
+    url(r'^scheduled/', hello.views.scheduled, name='scheduled'),
+    url(r'^statistics/', hello.views.statistics, name='statistics'),
     path('admin/', admin.site.urls),
+    path('tip/<int:pk>/', hello.views.tip, name='tip'),
+
 ]
 
 

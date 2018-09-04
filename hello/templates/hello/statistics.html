@@ -1,0 +1,48 @@
+<!-- graphic area in html -->
+
+{% extends 'hello/base.html' %}
+
+{% block content %}
+<h4>Activity <br><small>Multiple Bars Chart</small></h4>
+
+<div id="chartActivity" class="ct-chart "></div>
+
+<h6>Legend</h6>
+
+<span class="label label-info">Views</span>
+
+<span class="label label-success">Reads</span>
+{% endblock %}
+<!-- javascript -->
+
+var data = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  series: [
+	[542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+	[412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+  ]
+};
+
+var options = {
+	seriesBarDistance: 10,
+	axisX: {
+		showGrid: false
+	},
+	height: "245px"
+};
+
+var responsiveOptions = [
+  ['screen and (max-width: 640px)', {
+	seriesBarDistance: 5,
+	axisX: {
+	  labelInterpolationFnc: function (value) {
+		return value[0];
+	  }
+	}
+  }]
+];
+
+Chartist.Bar('#chartActivity', data, options, responsiveOptions);
+
+
+
