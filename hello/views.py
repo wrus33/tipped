@@ -32,7 +32,7 @@ def addnew(request):
         if form.is_valid():
             shift = form.save(commit=False)
             shift.amount = 50
-            shift.user = 
+            shift.user = 1;
             shift.save()
             return redirect('scheduled', )
     else:
