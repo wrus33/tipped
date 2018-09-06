@@ -14,56 +14,7 @@
 					<div class="row">
 
 
-						<div class="col">
-         				<div class="container-fluid bg-info" id="projections">
-         					    <h3 class="card-title text-center"><strong>Quick Projections</strong></h3>
-         					<div class="">
-         						<div class="card-content">
-         							<div class="container-fluid text-center">
-         								<div class="row">
-         									<div class="col-sm-4">
-         										<div class="card">
-         											<div class="card-content">
-         												
-         												<h5 class="card-title">Projected:</h5>
-         												<h5 class="card-body projectionscontent">${% total %}</h5>
-         												
-         											</div>
-         										</div>
-         									</div>
-         									<div class="col-sm-4">
-         										<div class="card">
-         											<div class="card-content">
-         												<h5 class="card-title">Average Projection:</h5>
-         												<h5 class="card-body projectionscontent">${% avg %}</h5>
-         											</div>
-         										</div>
-         									</div>
-         									<div class="col-sm-4">
-         										<div class="card">
-         											<div class="card-content">
-         												<h5 class="card-title">Shifts Scheduled:</h5>
-         												<h5 class="card-body projectionscontent">{% count %}</h5>
-         											</div>
-         										</div>
-         									</div>
-         								</div>
-         								<div class="row">
-         									<div class="">
-         										<div class="card" id="goal">
-         											<div class="card-content">
-         												<h5 class="card-title">Monthly Goal Progress:</h5>
-         												<h3 class="card-body projectionscontent">85%</h3>
-         												<h5 class="card-body projectionscontent bg-success">On Track!</h5>
-         											</div>
-         										</div>
-         									</div>
-         								</div>
-         							</div>
-         						</div>
-         					</div>
-     					</div>
-     				</div>
+						
 
      				<div class="col">
      					
@@ -80,7 +31,7 @@
 
 
 					<div class="row">
-            			<div class="container-fluid bg-success" id="shifts">
+            			<div class="container-fluid" id="shifts">
             	            <h3 id="upcomingLabel" class="card-title text-center"><strong>Upcoming Shifts</strong></h3>
 
             				{%  for shift in shifts  %}
@@ -95,6 +46,7 @@
                               				<h5>{{ shift.date|date:"M d"}}
                               				<h5>{{ shift.date|date:"f A"}}
                               				<h5>Projected: ${{ shift.amount }}</h4>
+                              				<h5>User: {{ shift.user }}</h5>
                               				<br>
                           				</div></a><!-- card content -->
                      			</div><!-- card -->
@@ -104,6 +56,7 @@
          				</div><!-- container -->
      				</div>
      			</div>
+     			<a href="/addnew"><h3 class="text-center bg-primary">Add New Shift</h3></a>
      		</div>
 {% endblock %}
 

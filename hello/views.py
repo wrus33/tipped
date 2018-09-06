@@ -24,7 +24,8 @@ def scheduled(request):
 
 
 def statistics(request):
-    return render(request, 'hello/quickview.html', {'form': form})
+    shifts = Shift.objects.all()
+    return render(request, 'hello/statistics.html', {'shifts': shifts})
 
 def addnew(request):
     if request.method == "POST":
@@ -32,7 +33,7 @@ def addnew(request):
         if form.is_valid():
             shift = form.save(commit=False)
             shift.amount = 50
-            shift.user = 1;
+            shift.user = request.user
             shift.save()
             return redirect('scheduled', )
     else:
