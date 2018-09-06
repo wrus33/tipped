@@ -40,9 +40,9 @@ def addnew(request):
         form = ShiftForm()
     return render(request, 'hello/addnew.html', {'form': form})
 
-def tip(request, pk):
-    tip = get_object_or_404(Shift, pk=pk)
-    return render(request, 'hello/tip.html', {'tip': tip})
+def shift(request, pk):
+    shift = get_object_or_404(Shift, pk=pk)
+    return render(request, 'hello/shift.html', {'shift': shift})
 
 
 

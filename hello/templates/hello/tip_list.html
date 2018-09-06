@@ -4,32 +4,8 @@
 
 
 {% block content %}
-			<div class="container-fluid">
-				
+			<div class="container-fluid">		
 				<div class="col">
-
-
-
-
-					<div class="row">
-
-
-						
-
-     				<div class="col">
-     					
-
-
-
-     				</div>
-
-
-
-     				</div>
-
-
-
-
 					<div class="row">
             			<div class="container-fluid" id="shifts">
             	            <h3 id="upcomingLabel" class="card-title text-center"><strong>Upcoming Shifts</strong></h3>
@@ -38,7 +14,7 @@
                				 {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {%  endif %}
                  			<div class="col-md-4" style="cursor: pointer">
                       			<div class="card">
-                          			<a href="{% url 'tip' pk=shift.pk %}">
+                          			<a href="{% url 'shift' pk=shift.pk %}">
                           				<div class="card-content tip-card">
                         
                               				<br>

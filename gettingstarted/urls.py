@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^statistics/', hello.views.statistics, name='statistics'),
     url(r'^addnew/', hello.views.addnew, name='addnew'),
     path('admin/', admin.site.urls),
-    path('tip/<int:pk>/', hello.views.tip, name='tip'),
+    path('shift/<int:pk>/', hello.views.shift, name='shift'),
     
 
 ]
