@@ -16,7 +16,7 @@
 
 						<div class="col">
          				<div class="container-fluid bg-info" id="projections">
-         					    <h3 class="card-title text-center">Quick Projections</h3>
+         					    <h3 class="card-title text-center"><strong>Quick Projections</strong></h3>
          					<div class="">
          						<div class="card-content">
          							<div class="container-fluid text-center">
@@ -66,8 +66,7 @@
      				</div>
 
      				<div class="col">
-     					{% block tip %}
-     					{% endblock %}
+     					
 
 
 
@@ -82,7 +81,7 @@
 
 					<div class="row">
             			<div class="container-fluid bg-success" id="shifts">
-            	            <h3 id="upcomingLabel" class="card-title text-center">Upcoming Shifts   <a href="#">+</a></h3>
+            	            <h3 id="upcomingLabel" class="card-title text-center"><strong>Upcoming Shifts</strong></h3>
 
             				{%  for shift in shifts  %}
                				 {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {%  endif %}
@@ -90,8 +89,9 @@
                       			<div class="card">
                           			<a href="{% url 'tip' pk=shift.pk %}">
                           				<div class="card-content tip-card">
+                        
                               				<br>
-                              				<h5>{{ shift.date|date:"D" }}</h4>
+                              				<h4><strong>{{ shift.date|date:"D" }}</strong></h4>
                               				<h5>{{ shift.date|date:"M d"}}
                               				<h5>{{ shift.date|date:"f A"}}
                               				<h5>Projected: ${{ shift.amount }}</h4>

@@ -14,8 +14,10 @@ urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     url(r'^scheduled/', hello.views.scheduled, name='scheduled'),
     url(r'^statistics/', hello.views.statistics, name='statistics'),
+    url(r'^addnew/', hello.views.addnew, name='addnew'),
     path('admin/', admin.site.urls),
     path('tip/<int:pk>/', hello.views.tip, name='tip'),
+    
 
 ]
 

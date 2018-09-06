@@ -1,0 +1,16 @@
+{% extends 'hello/base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid bg-warning text-center align-middle">
+    <h3 class="card-title text-center">Add New Shift</h3>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Add Shift</button>
+
+    </form>
+</div>
+
+
+{% endblock %}

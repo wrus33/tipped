@@ -1,9 +1,9 @@
 from django import forms
 
-from .models import Post
+from .models import Shift
 
-class PostForm(forms.ModelForm):
+class ShiftForm(forms.ModelForm):
 
     class Meta:
         model = Shift
-        fields = ('date')
+        fields = ('date',)
