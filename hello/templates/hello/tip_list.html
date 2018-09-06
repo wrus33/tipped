@@ -1,50 +1,60 @@
 
 {% extends 'hello/base.html' %}
+{% load customtags %}
 
 
 {% block content %}
 			<div class="container-fluid">
 				
-				<div class="row">
-					<div class="col">
-         				<div class="container-fluid">
-         					    <h3 class="card-title text-center">Quick Projections</h3>
+				<div class="col">
 
+
+
+
+					<div class="row">
+
+
+						<div class="col">
+         				<div class="container-fluid bg-info" id="projections">
+         					    <h3 class="card-title text-center">Quick Projections</h3>
          					<div class="">
          						<div class="card-content">
          							<div class="container-fluid text-center">
          								<div class="row">
-         									<div class="col-md-4">
+         									<div class="col-sm-4">
          										<div class="card">
          											<div class="card-content">
          												
-         												<h4 class="card-title">Projected:</h4>
-         												<h3 class="card-body projectionscontent">$789</h3>
+         												<h5 class="card-title">Projected:</h5>
+         												<h5 class="card-body projectionscontent">$789</h5>
          												
          											</div>
          										</div>
          									</div>
-         									<div class="col-md-4">
+         									<div class="col-sm-4">
          										<div class="card">
          											<div class="card-content">
-         												<h4 class="card-title">Average Projection:</h4>
-         												<h3 class="card-body projectionscontent">$78</h3>
+         												<h5 class="card-title">Average Projection:</h5>
+         												<h5 class="card-body projectionscontent">${% avg %}</h5>
          											</div>
          										</div>
          									</div>
-         									<div class="col-md-4">
+         									<div class="col-sm-4">
          										<div class="card">
          											<div class="card-content">
-         												<h4 class="card-title">Shifts:</h4>
-         												<h3 class="card-body projectionscontent">10</h3>
+         												<h5 class="card-title">Shifts Scheduled:</h5>
+         												<h5 class="card-body projectionscontent">10</h5>
          											</div>
          										</div>
          									</div>
-         									<div class="col-md-4">
-         										<div class="card">
+         								</div>
+         								<div class="row">
+         									<div class="">
+         										<div class="card" id="goal">
          											<div class="card-content">
-         												<h4 class="card-title">Monthly Goal Progress:</h4>
+         												<h5 class="card-title">Monthly Goal Progress:</h5>
          												<h3 class="card-body projectionscontent">85%</h3>
+         												<h5 class="card-body projectionscontent bg-success">On Track!</h5>
          											</div>
          										</div>
          									</div>
@@ -54,8 +64,24 @@
          					</div>
      					</div>
      				</div>
-					<div class="col">
-            			<div class="container-fluid">
+
+     				<div class="col">
+     					{% block tip %}
+     					{% endblock %}
+
+
+
+     				</div>
+
+
+
+     				</div>
+
+
+
+
+					<div class="row">
+            			<div class="container-fluid bg-success" id="shifts">
             	            <h3 id="upcomingLabel" class="card-title text-center">Upcoming Shifts   <a href="#">+</a></h3>
 
             				{%  for shift in shifts  %}
@@ -65,8 +91,10 @@
                           			<a href="{% url 'tip' pk=shift.pk %}">
                           				<div class="card-content tip-card">
                               				<br>
-                              				<h4>{{ shift.date }}</h4>
-                              				<h4>Projected: ${{ shift.amount }}</h4>
+                              				<h5>{{ shift.date|date:"D" }}</h4>
+                              				<h5>{{ shift.date|date:"M d"}}
+                              				<h5>{{ shift.date|date:"f A"}}
+                              				<h5>Projected: ${{ shift.amount }}</h4>
                               				<br>
                           				</div></a><!-- card content -->
                      			</div><!-- card -->
