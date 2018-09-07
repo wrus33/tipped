@@ -7,19 +7,19 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Avg
 from .forms import ShiftForm
 from django.shortcuts import redirect
+from datetime import datetime
 
 from .models import Shift
 
-# Create your views here.
 def index(request):
     shifts = Shift.objects.all()
     
     return render(request, 'hello/home.html', {'shifts': shifts})
 
 def scheduled(request):
-    shifts = Shift.objects.order_by('date')
-    average = Shift.objects.aggregate(Avg('amount'))
-    return render(request, 'hello/quickview.html', {'shifts': shifts})
+    now = datetime.now()
+    shifts = Shift.objects.filter(date__gte=now, user=request.user).order_by('date')
+    return render(request, 'hello/tip_list.html', {'shifts': shifts})
 
 
 
@@ -32,7 +32,8 @@ def addnew(request):
         form = ShiftForm(request.POST)
         if form.is_valid():
             shift = form.save(commit=False)
-            shift.amount = 50
+            shift.predicted = 50
+            shift.actual = 0
             shift.user = request.user
             shift.save()
             return redirect('scheduled', )
@@ -43,18 +44,3 @@ def addnew(request):
 def shift(request, pk):
     shift = get_object_or_404(Shift, pk=pk)
     return render(request, 'hello/shift.html', {'shift': shift})
-
-
-
-def post_new(request):
-    if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('post_detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})

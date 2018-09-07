@@ -3,9 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 
-
-# Create your models here.
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     toBeBudgeted = models.IntegerField
@@ -13,10 +10,13 @@ class Profile(models.Model):
         return str(self.user)
 
 class Shift(models.Model):
-    amount = models.IntegerField()
-    date = models.DateTimeField()
+    predicted = models.IntegerField()
+    date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(User,verbose_name = 'User',related_name='Shifts', on_delete=models.CASCADE)
+    actual = models.IntegerField()
+    def variance(self):
+        return actual - predicted
     def __str__(self):
-        return str(self.amount)
+        return str(self.predicted)
 
 
