@@ -3,7 +3,7 @@
 {% extends 'hello/base.html' %}
 {% load customtags %}
 {% block content %}
-<div class="col">
+					<div class="row">
          				<div class="container-fluid bg-info" id="projections">
          					    <h3 class="card-title text-center"><strong>Quick Projections</strong></h3>
          					<div class="">
@@ -53,6 +53,40 @@
          					</div>
      					</div>
      				</div>
-     				<h5>{% monthToDate %}
+
+
+
+
+     				<div class="row">
+     					<h3 class="card-title text-center"><strong>My Progress</strong></h3>
+     						<div class="col-md-4">
+     							<div class="card">
+     								<div class="card-content">
+     									<h4 class="card-title">This Week</h4>
+     									<p class="card-body">Earned: {% weekToDate %}</p>
+
+     								</div>
+     							</div>
+     						</div>
+     						<div class="col-md-4">
+     							<div class="card">
+     								<div class="card-content">
+     									<h4 class="card-title">This Month</h4>
+     									<p class="card-body">Earned: {% monthToDate %}</p>
+     								</div>
+     							</div>
+     						</div>
+     						<div class="col-md-4">
+     							<div class="card">
+     								<div class="card-content">
+     									<h4 class="card-title">This Year</h4>
+     									<p class="card-body">Earned: {% yearToDate %}</p>
+
+     								</div>
+     							</div>
+     						</div>
+
+     				</div>
+     				
 
      				{% endblock %}

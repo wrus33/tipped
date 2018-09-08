@@ -26,3 +26,10 @@ def total():
 def monthToDate():
 	return Shift.objects.filter(date__lt=now).aggregate(Sum('actual'))
 	
+@register.simple_tag
+def yearToDate():
+	return Shift.objects.filter(date__lt=now).aggregate(Sum('actual'))
+
+@register.simple_tag
+def weekToDate():
+	return Shift.objects.filter(date__lt=now).aggregate(Sum('actual'))
