@@ -16,7 +16,9 @@ urlpatterns = [
     url(r'^statistics/', hello.views.statistics, name='statistics'),
     url(r'^addnew/', hello.views.addnew, name='addnew'),
     path('admin/', admin.site.urls),
+    url(r'^signup/$', hello.views.signup, name='signup'),
     path('shift/<int:pk>/', hello.views.shift, name='shift'),
+    path('user/<int:pk>/', hello.views.user, name='user')
     
 
 ]

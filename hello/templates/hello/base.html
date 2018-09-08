@@ -89,8 +89,8 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <a href="/accounts/login">
-                               Account
+                            <a href="{% url 'user' pk=user.pk %}">
+                                {{ request.user }}
                             </a>
                         </li>
                     </ul>

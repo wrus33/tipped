@@ -8,8 +8,25 @@ from django.db.models import Avg
 from .forms import ShiftForm
 from django.shortcuts import redirect
 from datetime import datetime
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
+from .models import User
 from .models import Shift
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('scheduled')
+    else:
+        form = UserCreationForm()
+    return render(request, 'hello/signup.html', {'form': form})
 
 def index(request):
     shifts = Shift.objects.all()
@@ -21,7 +38,9 @@ def scheduled(request):
     shifts = Shift.objects.filter(date__gte=now, user=request.user).order_by('date')
     return render(request, 'hello/tip_list.html', {'shifts': shifts})
 
-
+def user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'hello/user.html', {'user':user})
 
 def statistics(request):
     shifts = Shift.objects.all()
